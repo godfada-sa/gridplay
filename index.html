@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Gridplay is a simple two-player tic-tac-toe game built around a two-dimensional array.">
+  <title>Gridplay — a small game of X and O</title>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="loader" id="loader" aria-hidden="true" hidden>
+    <div class="loader-grid"><i></i><i></i><i></i><i></i></div>
+    <span>GRIDPLAY</span>
+  </div>
+
+  <header class="site-header page-width">
+    <a class="wordmark" href="#game" aria-label="Gridplay home"><span class="wordmark-mark">+</span>GRIDPLAY</a>
+    <nav aria-label="Primary navigation"><a href="#game">Play</a><a href="#about">How it works</a></nav>
+    <button class="header-reset" id="header-reset" type="button">New game <span>↗</span></button>
+  </header>
+
+  <main>
+    <section class="hero page-width" id="game">
+      <div class="hero-copy">
+        <h1>Small grid.<br><span>Big energy.</span></h1>
+        <p class="hero-lead">A quick game of X and O, powered by a two-dimensional array. Take your turn and make your line.</p>
+        <a class="hero-action" href="#board">Play the first move <span>↓</span></a>
+      </div>
+      <div class="hero-motif" aria-hidden="true"><div class="hero-grid"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div></div>
+    </section>
+
+    <section class="game-section page-width" id="board" aria-labelledby="game-heading">
+      <div class="section-heading"><div><h2 id="game-heading">Make your mark.</h2></div><div class="turn-status" id="turn-status" aria-live="polite"><i class="status-dot"></i><span>Player X's turn</span></div></div>
+      <div class="game-layout">
+        <div class="board-frame">
+          <div class="board" id="board-grid" role="grid" aria-label="Tic-tac-toe board"></div>
+          <div class="board-foot"><span id="move-count">0 moves</span><span>First to three in a row</span></div>
+        </div>
+        <aside class="score-panel" aria-label="Scoreboard">
+          <div class="score-heading"><span>Scoreboard</span><span class="round-label">#<strong id="round-number">1</strong></span></div>
+          <div class="score-row score-x"><div class="player-icon">×</div><div><strong>Player X</strong></div><b id="score-x">0</b></div>
+          <div class="score-row score-o"><div class="player-icon">○</div><div><strong>Player O</strong></div><b id="score-o">0</b></div>
+          <div class="score-row score-draw"><div class="player-icon">=</div><div><strong>Draws</strong></div><b id="score-draw">0</b></div>
+          <button class="dark-button" id="reset-button" type="button">Reset round <span>↻</span></button>
+        </aside>
+      </div>
+    </section>
+
+    <section class="array-panel page-width" id="about" aria-labelledby="array-heading">
+      <div class="array-number">[ ]</div>
+      <div><h2 id="array-heading">The board is the data.</h2><p>Every square is a position in a <strong>3 × 3 array</strong>. Row and column indices tell the game where a move happened, while a quick loop checks every winning line.</p></div>
+      <pre id="array-output" aria-label="Current two-dimensional board array"></pre>
+    </section>
+
+    <section class="principles page-width">
+      <h2>Three rules.<br>That’s it.</h2>
+      <div class="principle"><h3>Choose an empty square.</h3><p>Each move writes X or O into one available array position.</p></div>
+      <div class="principle"><h3>Make a line.</h3><p>Across, down, or diagonal. The board checks all eight winning combinations.</p></div>
+      <div class="principle"><h3>Keep it friendly.</h3><p>No login, no leaderboard, no distractions. Just two people and nine squares.</p></div>
+    </section>
+  </main>
+
+  <footer class="site-footer page-width"><div class="footer-grid-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="footer-bottom"><span>GRIDPLAY</span><span>Made for a data structures assignment.</span><span>© 2026</span></div></footer>
+
+  <div class="result-modal" id="result-modal" hidden role="dialog" aria-modal="true" aria-labelledby="result-title"><div class="modal-card"><button class="modal-close" id="modal-close" aria-label="Close game result">×</button><h2 id="result-title">Player X wins.</h2><p id="result-message">A clean line across the grid.</p><button class="dark-button" id="modal-reset" type="button">Play again <span>↗</span></button></div></div>
+</body>
+</html>
